@@ -1,4 +1,4 @@
-# unified deployment module
+# Unified deployment module
 
 This module is to be sourced from other repositories that need to deploy a service to kubernetes.
 
