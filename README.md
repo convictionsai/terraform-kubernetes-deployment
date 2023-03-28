@@ -37,11 +37,17 @@ locals {
                 }
             ]
         }
+        env = {
+            DB_HOST     = "mysql"
+            DB_PORT     = 3306
+            DB_USERNAME = "changeme"
+            DB_PASSWORD = "changeme"
+        }
     }
 }
 
 module "deploy" {
-    source = "git::ssh://git@github.com:convictionsai/terraform-kubernetes-deployment.git?ref=0.0.1"
+    source   = "git::ssh://git@github.com:convictionsai/terraform-kubernetes-deployment.git?ref=0.0.1"
     settings = local.settings
 }
 ```
