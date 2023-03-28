@@ -38,6 +38,7 @@ locals {
             ]
         }
         env = {
+            PORT        = 8080
             DB_HOST     = "mysql"
             DB_PORT     = 3306
             DB_USERNAME = "changeme"
