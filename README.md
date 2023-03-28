@@ -39,6 +39,11 @@ locals {
         }
     }
 }
+
+module "deploy" {
+    source = "git://git@..."
+    settings = local.settings
+}
 ```
 
 ### YAML
