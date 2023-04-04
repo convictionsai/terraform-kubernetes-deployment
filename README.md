@@ -6,14 +6,18 @@ This module is to be sourced from other repositories that need to deploy a servi
 
 ### Terraform
 ```hcl
-variable "version" {}
+provider "kubernetes" {
+    config_path = "~/.kube/config"
+}
+
+variable "tag" {}
 
 locals {
     settings = {
-        name      = "app"
+        name      = "test-app-1"
         namespace = "convictionsai"
         type      = "backend"
-        version   = var.version
+        version   = var.tag
         resources = {
             replicas = 1
             requests = {
@@ -48,7 +52,7 @@ locals {
 }
 
 module "deploy" {
-    source   = "git::ssh://git@github.com:convictionsai/terraform-kubernetes-deployment.git?ref=0.0.1"
+    source   = "git::ssh://git@github.com:convictionsai/terraform-kubernetes-deployment.git?ref=0.0.2"
     settings = local.settings
 }
 ```
