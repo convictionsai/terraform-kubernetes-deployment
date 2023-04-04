@@ -13,7 +13,7 @@ resource "kubernetes_service" "service" {
             app = var.settings.name
         }
         dynamic "port" {
-            for_each = var.settings.ports
+            for_each = var.settings.networking.ports
             content {
                 name        = port.value.name
                 port        = port.value.port

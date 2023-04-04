@@ -32,7 +32,7 @@ resource "kubernetes_manifest" "traefik-router" {
                         {
                             name      = var.settings.name
                             namespace = var.settings.namespace
-                            port      = var.settings.networking.ports[ 0 ].containerPort
+                            port      = var.settings.networking.ports[ 0 ].port
                         }
                     ]
                 }

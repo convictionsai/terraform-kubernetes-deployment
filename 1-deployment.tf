@@ -55,12 +55,12 @@ resource "kubernetes_deployment" "deployment" {
 
                     resources {
                         requests = {
-                            cpu    = var.settings.resources.cpu
-                            memory = var.settings.resources.memory
+                            cpu    = var.settings.resources.requests.cpu
+                            memory = var.settings.resources.requests.memory
                         }
                         limits = {
-                            cpu    = var.settings.resources.cpu
-                            memory = var.settings.resources.memory
+                            cpu    = var.settings.resources.limits.cpu
+                            memory = var.settings.resources.limits.memory
                         }
                     }
 
@@ -72,7 +72,7 @@ resource "kubernetes_deployment" "deployment" {
                     dynamic "port" {
                         for_each = var.settings.networking.ports
                         content {
-                            container_port = port.value
+                            container_port = port.value.port
                         }
                     }
 

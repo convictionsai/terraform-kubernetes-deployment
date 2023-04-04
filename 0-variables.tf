@@ -6,8 +6,14 @@ variable "settings" {
         namespace = string
         resources = object({
             replicas = number
-            cpu      = string
-            memory   = string
+            requests = object({
+                cpu    = string
+                memory = string
+            })
+            limits = object({
+                cpu    = string
+                memory = string
+            })
         })
         networking = object({
             ingress = object({
@@ -15,10 +21,8 @@ variable "settings" {
                 path     = string
             })
             ports = list(object({
-                name          = string
-                containerPort = number
-                targetPort    = number
-                protocol      = string
+                name = string
+                port = number
             }))
         })
         env = optional(map(string))
